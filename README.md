@@ -4,7 +4,7 @@
 
 gui界面改造自yhy0师傅的https://github.com/yhy0/ExpDemo-JavaFX。
 
-![](.\展示.png)
+![](https://github.com/l3s10n/zentaopms-attack-tool/blob/main/%E5%B1%95%E7%A4%BA.png)
 
 # 支持的漏洞
 
