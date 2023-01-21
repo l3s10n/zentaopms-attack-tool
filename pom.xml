@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fun.fireline</groupId>
+    <artifactId>ExpDemo-JavaFX</artifactId>
+    <packaging>jar</packaging>
+    <version>1.9</version>
+
+    <name>ExpDemo-JavaFX</name>
+    <!-- FIXME change it to the project's website -->
+    <url>https://github.com/yhy0/ExpDemo-JavaFX</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.78</version>
+        </dependency>
+
+        <!-- log4j support -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <groupId>com.zenjava</groupId>
+                    <artifactId>javafx-maven-plugin</artifactId>
+                    <version>8.8.3</version>
+                    <configuration>
+
+                        <!-- 启动类 -->
+                        <mainClass>fun.fireline.AppStartUp</mainClass>
+                        <!-- 运行文件名 -->
+                        <appName>${project.build.finalName}</appName>
+                        <!-- 菜单-->
+                        <needMenu>true</needMenu>
+                        <!-- 桌面图标 -->
+                        <needShortcut>true</needShortcut>
+                        <!-- 公司名称 -->
+                        <vendor>yhy</vendor>
+                        <needShortcut>true</needShortcut><!-- 需要生成快捷方式-->
+                        <bundleArguments>
+                            <installdirChooser>true</installdirChooser><!-- 指示用户是否可以选择应用程序安装目录的标志 -->
+                            <!--   <licenseFile>${licenseFilePath}</licenseFile> &lt;!&ndash; 安装时显示的用户协议 &ndash;&gt;-->
+                        </bundleArguments>
+                    </configuration>
+                </plugin>
+
+                <!-- 打包依赖包到jar中 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+
+                                <mainClass>fun.fireline.AppStartUp</mainClass>
+                            </manifest>
+                        </archive>
+                        <!-- get all project dependencies -->
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <!-- MainClass in mainfest make a executable jar -->
+                        <!-- 运行文件名 -->
+                        <finalName>禅道综合利用工具</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+    </build>
+</project>
